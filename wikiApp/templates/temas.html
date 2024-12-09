@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block titulo %}
+    temas Registrados
+{% endblock %}
+
+{% block contenido %}
+    <h2>Lista de Temas</h2>
+    <ol>
+        {% for temaInfo in temasTotales %}
+        <br>
+        <li>
+            <ul>
+                <li>Nombre Temas : {{ temaInfo.nombreTema }}</li>
+                <li>Descripcion Tema : {{ temaInfo.descripcionTema }}</li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

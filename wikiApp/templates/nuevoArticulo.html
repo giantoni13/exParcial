@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block titulo %}
+    Nuevo Articulo
+{% endblock %}
+
+{% block contenido %}
+
+<h2>Modulo de Creacion de Articulo</h2>
+<form action="{% url 'wikiApp:nuevoArticulo' %}" method="POSt">
+    {% csrf_token %}
+    <div class="content">
+        <div class="row">
+            <table class="table">                    
+                <tbody>
+                  <tr>
+                    <th scope="row">Titulo Articulo :</th>
+                    <td>
+                        <input type="text" class="text" name="tituloArticulo" style="width: 500px;">
+                    </td>                        
+                  </tr>
+                  <tr>
+                    <th scope="row">Tema Articulo :</th>
+                    <td>
+                        <select name="temaSeleccionado" class="form-control-sm">
+                            {% for temaInfo in temaSistema %}
+                                <option value="{{ temaInfo.id }}">{{ temaInfo.nombreTema }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>                        
+                  </tr>
+                  <tr>
+                    <th scope="row">Contenido Articulo : </th>                        
+                    <td>
+                        <input type="text" class="text" name="contenidoArticulo" style="width: 700px;">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                        <input type="submit" value="Registrar">
+                    </th>                        
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}
